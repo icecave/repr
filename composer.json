@@ -1,0 +1,25 @@
+{
+    "name": "icecave/stringizer",
+    "type": "library",
+    "description": "Human readable string representations of everything.",
+    "keywords": ["string", "representation", "repr"],
+    "homepage": "https://github.com/IcecaveStudios/repr",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Harris",
+            "email": "james.harris@icecave.com.au"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "phake/phake": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Icecave\\Stringify": "lib"
+        }
+    }
+}
