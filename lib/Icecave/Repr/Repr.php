@@ -13,12 +13,13 @@ class Repr
      *
      * @return string The string representation of $value.
      */
-    static public function repr($value)
+    public static function repr($value)
     {
         static $generator;
         if (null === $generator) {
             $generator = new Generator;
         }
+
         return $generator->generate($value);
     }
 }

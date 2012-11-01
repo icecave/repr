@@ -1,0 +1,59 @@
+{
+    "hash": "8880a40497347726e39360acb9087b0a",
+    "packages": [
+
+    ],
+    "packages-dev": [
+        {
+            "name": "phake/phake",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/mlively/Phake.git",
+                "reference": "v1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/mlively/Phake/zipball/v1.0.3",
+                "reference": "v1.0.3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "time": "2012-05-14 08:06:51",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "include-path": [
+                "src"
+            ],
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Lively",
+                    "email": "m@digitalsandwich.com"
+                }
+            ],
+            "description": "The Phake mock testing library",
+            "homepage": "https://github.com/mlively/Phake",
+            "keywords": [
+                "testing",
+                "mock"
+            ]
+        }
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}

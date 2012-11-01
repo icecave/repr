@@ -1,6 +1,8 @@
 <?php
 namespace Icecave\Repr;
 
+use ReflectionClass;
+
 /**
  * Generate informational string representations of any value.
  */
@@ -11,7 +13,7 @@ class Generator
      * @param integer $maximumDepth    The maximum depth to represent for nested types.
      * @param integer $maximumElements The maximum number of elements to include in representations of container types.
      */
-    public function __construct($maximumLength = 100, $maximumDepth = 5, $maximumElements = 3)
+    public function __construct($maximumLength = 50, $maximumDepth = 3, $maximumElements = 3)
     {
         $this->maximumLength = $maximumLength;
         $this->maximumDepth = $maximumDepth;
@@ -19,7 +21,7 @@ class Generator
     }
 
     /**
-     * @param mixed $value The value to represent.
+     * @param mixed   $value        The value to represent.
      * @param integer $currentDepth The current depth in the representation string.
      *
      * @return string A short human-readable string representation of the given value.
@@ -34,13 +36,17 @@ class Generator
             return $this->generateForObject($value, $currentDepth);
         } elseif (is_resource($value)) {
             return $this->generateForResource($value, $currentDepth);
+        } elseif (is_string($value)) {
+            return $this->generateForString($value, $currentDepth);
+        } elseif (is_float($value)) {
+            return $this->generateForFloat($value, $currentDepth);
         } else {
             return $this->generateForScalar($value, $currentDepth);
         }
     }
 
     /**
-     * @param null $value
+     * @param null    $value
      * @param integer $currentDepth
      *
      * @return string
@@ -51,57 +57,63 @@ class Generator
     }
 
     /**
-     * @param array $value
+     * @param array   $value
      * @param integer $currentDepth
      *
      * @return string
      */
     public function generateForArray($value, $currentDepth = 0)
     {
-        $size = count($value);
-        if (0 === $size || $this->maximumDepth === $currentDepth) {
-            return sprintf('<array %d>', $size);
+        $size   = count($value);
+        $vector = array_keys($value) === range(0, $size - 1);
+        $more   = null;
+
+        if (0 === $size) {
+            return '[]';
+        } elseif ($this->maximumDepth === $currentDepth) {
+            return sprintf('[<%d>]', $size);
+        } elseif ($this->maximumElements < $size) {
+            $value = array_slice($value, 0, $this->maximumElements);
+            $more  = sprintf('<+%d>', $size - $this->maximumElements);
         }
 
-        $elements  = array();
-        $isAssoc   = array_keys($value) !== range(0, $size - 1);
-        $remaining = $this->maximumElements;
+        $elements = array();
 
-        foreach ($value as $key => $element) {
-            if (0 === $remaining--) {
-                $elements[] = '...';
-                break;
+        // Generate element representations for vector-like array ...
+        if ($vector) {
+            foreach ($value as $element) {
+                $elements[] = $this->generate($element, $currentDepth + 1);
             }
 
-            $repr = $this->generate($elements, $currentDepth + 1);
-            if ($isAssoc) {
-                $repr = $key . ' => ' . $repr;
+        // Generate element representations for associative array ...
+        } else {
+            foreach ($value as $key => $element) {
+                $elements[] = $this->generate($key) . ' => ' . $this->generate($element, $currentDepth + 1);
             }
-
-            $elements[] = $repr;
         }
 
-        return sprintf(
-            '<array %d [%s]>'
-            $size,
-            implode(', ', $elements)
-        );
+        if ($more) {
+            $elements[] = $more;
+        }
+
+        return '[' . implode(', ', $elements) . ']';
     }
 
     /**
-     * @param object $value
+     * @param object  $value
      * @param integer $currentDepth
      *
      * @return string
      */
-    public function generateForObject($value, $currentDepth = 0) {
+    public function generateForObject($value, $currentDepth = 0)
+    {
         if ($value instanceof IRepresentable) {
-            return $value->repr($this, $currentDepth);
+            return $value->stringRepresentation($this, $currentDepth);
         }
 
         $reflector = new ReflectionClass($value);
         if ($reflector->hasMethod('__toString')) {
-            $string = ' ' . $this->trimToLength($value->__toString());
+            $string = ' ' . $this->generateForString($value->__toString(), $currentDepth);
         } else {
             $string = '';
         }
@@ -116,56 +128,95 @@ class Generator
 
     /**
      * @param resource $value
-     * @param integer $currentDepth
+     * @param integer  $currentDepth
      *
      * @return string
      */
-    public function generateForResource($value, $currentDepth = 0) {
+    public function generateForResource($value, $currentDepth = 0)
+    {
         $type = get_resource_type($value);
         if ('stream' === $type) {
             $metaData = stream_get_meta_data($value);
-            return sprintf('<stream resource #%d %s>', $value, $metaData['mode']);
+            $info = ' ' . $metaData['mode'];
+        } else {
+            $info = '';
         }
-        return sprintf('<%s resource #%d>', $type, $value);
+
+        return sprintf(
+            '<resource: %s #%d%s>',
+            $type,
+            $value,
+            $info
+        );
+    }
+
+    public function generateForString($value, $currentDepth = 0)
+    {
+        $length = strlen($value);
+        $open   = '"';
+        $close  = '"';
+
+        if ($length > $this->maximumLength) {
+            $close = '...';
+            $length = $this->maximumLength;
+        }
+
+        $repr = '';
+
+        for ($index = 0; $index < $length; ++$index) {
+            $ch = $value{$index};
+
+            if ($ch === "\n") {
+                $ch = '\n';
+            } elseif ($ch === "\r") {
+                $ch = '\r';
+            } elseif ($ch === "\t") {
+                $ch = '\t';
+            } elseif ($ch === "\v") {
+                $ch = '\v';
+            } elseif (version_compare(PHP_VERSION, '5.4.0', '>=') && $ch === "\e") {
+                $ch = '\e';
+            } elseif ($ch === "\f") {
+                $ch = '\f';
+            } elseif ($ch === "\\") {
+                $ch = '\\\\';
+            } elseif ($ch === '$') {
+                $ch = '\$';
+            } elseif ($ch === '"') {
+                $ch = '\"';
+            } elseif (!ctype_print($ch)) {
+                $ch = sprintf('\x%02x', ord($ch));
+            }
+
+            $repr .= $ch;
+        }
+
+        return $open . $repr . $close;
     }
 
     /**
-     * @param scalar $value
+     * @param scalar  $value
      * @param integer $currentDepth
      *
      * @return string
      */
-    public function generateForScalar($value, $currentDepth = 0) {
-        $repr = var_export($value, true);
-        if (is_string($value)) {
-            $repr = str_replace(
-                array("\r", "\n"),
-                array('\r', '\n'),
-                $value
-            );
+    public function generateForFloat($value, $currentDepth = 0)
+    {
+        if (0.0 === fmod($value, 1.0)) {
+            return $value . '.0';
         }
 
-        return sprintf(
-            '<%s %s>',
-            gettype($value),
-            $this->trimToLength($repr)
-        );
+        return strval($value);
     }
 
     /**
-     * @param string $string
-     * @param string $ellipsis
+     * @param scalar  $value
+     * @param integer $currentDepth
      *
      * @return string
      */
-    public function trimToLength($string, $ellipsis = '...') {
-        if (strlen($string) > $this->maximumLength) {
-            return substr(
-                $string,
-                0,
-                $this->maximumLength - strlen($ellipsis)
-            ) . $ellipsis;
-        }
-        return $string;
+    public function generateForScalar($value, $currentDepth = 0)
+    {
+        return var_export($value, true);
     }
 }
