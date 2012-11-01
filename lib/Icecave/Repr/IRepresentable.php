@@ -1,6 +1,8 @@
 <?php
 namespace Icecave\Repr;
 
+// @codeCoverageIgnoreStart
+
 /**
  * Interface for objects that provide their own string representation.
  */

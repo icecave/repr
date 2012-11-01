@@ -14,7 +14,7 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testNull()
     {
-        $this->assertSame('<null>', $this->_generator->generate(null));
+        $this->assertSame('null', $this->_generator->generate(null));
     }
 
     public function testArrayEmpty()

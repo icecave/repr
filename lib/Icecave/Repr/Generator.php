@@ -28,9 +28,7 @@ class Generator
      */
     public function generate($value, $currentDepth = 0)
     {
-        if (is_null($value)) {
-            return $this->generateForNull($value, $currentDepth);
-        } elseif (is_array($value)) {
+        if (is_array($value)) {
             return $this->generateForArray($value, $currentDepth);
         } elseif (is_object($value)) {
             return $this->generateForObject($value, $currentDepth);
@@ -41,19 +39,8 @@ class Generator
         } elseif (is_float($value)) {
             return $this->generateForFloat($value, $currentDepth);
         } else {
-            return $this->generateForScalar($value, $currentDepth);
+            return $this->generateForOther($value, $currentDepth);
         }
-    }
-
-    /**
-     * @param null    $value
-     * @param integer $currentDepth
-     *
-     * @return string
-     */
-    public function generateForNull($value, $currentDepth = 0)
-    {
-        return '<null>';
     }
 
     /**
@@ -215,8 +202,8 @@ class Generator
      *
      * @return string
      */
-    public function generateForScalar($value, $currentDepth = 0)
+    public function generateForOther($value, $currentDepth = 0)
     {
-        return var_export($value, true);
+        return strtolower(var_export($value, true));
     }
 }

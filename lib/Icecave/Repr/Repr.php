@@ -15,11 +15,17 @@ class Repr
      */
     public static function repr($value)
     {
-        static $generator;
-        if (null === $generator) {
-            $generator = new Generator;
+        if (null === self::$generator) {
+            self::install(new Generator);
         }
 
-        return $generator->generate($value);
+        return self::$generator->generate($value);
     }
+
+    public static function install(Generator $generator)
+    {
+        self::$generator = $generator;
+    }
+
+    private static $generator;
 }
