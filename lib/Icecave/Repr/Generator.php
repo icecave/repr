@@ -206,4 +206,8 @@ class Generator
     {
         return strtolower(var_export($value, true));
     }
+
+    private $maximumLength;
+    private $maximumDepth;
+    private $maximumElements;
 }
