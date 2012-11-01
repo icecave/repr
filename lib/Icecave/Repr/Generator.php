@@ -4,23 +4,25 @@ namespace Icecave\Repr;
 use ReflectionClass;
 
 /**
- * Generate informational string representations of any value.
+ * Generates string representations of arbitrary values.
  */
 class Generator
 {
     /**
-     * @param integer $maximumLength   The maximum length of strings within the result.
+     * @param integer $maximumLength   The maximum number of characters to display when representing a string.
      * @param integer $maximumDepth    The maximum depth to represent for nested types.
      * @param integer $maximumElements The maximum number of elements to include in representations of container types.
      */
     public function __construct($maximumLength = 50, $maximumDepth = 3, $maximumElements = 3)
     {
-        $this->maximumLength = $maximumLength;
-        $this->maximumDepth = $maximumDepth;
-        $this->maximumElements = $maximumElements;
+        $this->setMaximumLength($maximumLength);
+        $this->setMaximumDepth($maximumDepth);
+        $this->setMaximumElements($maximumElements);
     }
 
     /**
+     * Generate a string representation for an arbitrary value.
+     *
      * @param mixed   $value        The value to represent.
      * @param integer $currentDepth The current depth in the representation string.
      *
@@ -44,12 +46,60 @@ class Generator
     }
 
     /**
+     * @return integer The maximum number of characters to display when representing a string.
+     */
+    public function maximumLength()
+    {
+        return $this->maximumLength;
+    }
+
+    /**
+     * @param integer $maximum The maximum number of characters to display when representing a string.
+     */
+    public function setMaximumLength($maximum)
+    {
+        $this->maximumLength = $maximum;
+    }
+
+    /**
+     * @return integer The maximum depth to represent for nested types.
+     */
+    public function maximumDepth()
+    {
+        return $this->maximumDepth;
+    }
+
+    /**
+     * @param integer $maximum The maximum depth to represent for nested types.
+     */
+    public function setMaximumDepth($maximum)
+    {
+        $this->maximumDepth = $maximum;
+    }
+
+    /**
+     * @return integer The maximum number of elements to include in representations of container types.
+     */
+    public function maximumElements()
+    {
+        return $this->maximumElements;
+    }
+
+    /**
+     * @param integer $maximum The maximum number of elements to include in representations of container types.
+     */
+    public function setMaximumElements($maximum)
+    {
+        $this->maximumElements = $maximum;
+    }
+
+    /**
      * @param array   $value
      * @param integer $currentDepth
      *
      * @return string
      */
-    public function generateForArray($value, $currentDepth = 0)
+    protected function generateForArray($value, $currentDepth = 0)
     {
         $size   = count($value);
         $vector = array_keys($value) === range(0, $size - 1);
@@ -57,11 +107,11 @@ class Generator
 
         if (0 === $size) {
             return '[]';
-        } elseif ($this->maximumDepth === $currentDepth) {
+        } elseif ($this->maximumDepth() === $currentDepth) {
             return sprintf('[<%d>]', $size);
-        } elseif ($this->maximumElements < $size) {
-            $value = array_slice($value, 0, $this->maximumElements);
-            $more  = sprintf('<+%d>', $size - $this->maximumElements);
+        } elseif ($this->maximumElements() < $size) {
+            $value = array_slice($value, 0, $this->maximumElements());
+            $more  = sprintf('<+%d>', $size - $this->maximumElements());
         }
 
         $elements = array();
@@ -92,7 +142,7 @@ class Generator
      *
      * @return string
      */
-    public function generateForObject($value, $currentDepth = 0)
+    protected function generateForObject($value, $currentDepth = 0)
     {
         if ($value instanceof IRepresentable) {
             return $value->stringRepresentation($this, $currentDepth);
@@ -119,7 +169,7 @@ class Generator
      *
      * @return string
      */
-    public function generateForResource($value, $currentDepth = 0)
+    protected function generateForResource($value, $currentDepth = 0)
     {
         $type = get_resource_type($value);
         if ('stream' === $type) {
@@ -137,15 +187,15 @@ class Generator
         );
     }
 
-    public function generateForString($value, $currentDepth = 0)
+    protected function generateForString($value, $currentDepth = 0)
     {
         $length = strlen($value);
         $open   = '"';
         $close  = '"';
 
-        if ($length > $this->maximumLength) {
+        if ($length > $this->maximumLength()) {
             $close = '...';
-            $length = $this->maximumLength;
+            $length = $this->maximumLength();
         }
 
         $repr = '';
@@ -187,7 +237,7 @@ class Generator
      *
      * @return string
      */
-    public function generateForFloat($value, $currentDepth = 0)
+    protected function generateForFloat($value, $currentDepth = 0)
     {
         if (0.0 === fmod($value, 1.0)) {
             return $value . '.0';
@@ -202,7 +252,7 @@ class Generator
      *
      * @return string
      */
-    public function generateForOther($value, $currentDepth = 0)
+    protected function generateForOther($value, $currentDepth = 0)
     {
         return strtolower(var_export($value, true));
     }
