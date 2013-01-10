@@ -117,7 +117,7 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testRepresentableObject()
     {
-        $object = Phake::mock(__NAMESPACE__ . '\IRepresentable');
+        $object = Phake::mock(__NAMESPACE__ . '\RepresentableInterface');
 
         Phake::when($object)
             ->stringRepresentation(Phake::anyParameters())

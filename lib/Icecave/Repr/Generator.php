@@ -31,17 +31,17 @@ class Generator
     public function generate($value, $currentDepth = 0)
     {
         if (is_array($value)) {
-            return $this->generateForArray($value, $currentDepth);
+            return $this->renderArray($value, $currentDepth);
         } elseif (is_object($value)) {
-            return $this->generateForObject($value, $currentDepth);
+            return $this->renderObject($value, $currentDepth);
         } elseif (is_resource($value)) {
-            return $this->generateForResource($value, $currentDepth);
+            return $this->renderResource($value, $currentDepth);
         } elseif (is_string($value)) {
-            return $this->generateForString($value, $currentDepth);
+            return $this->renderString($value, $currentDepth);
         } elseif (is_float($value)) {
-            return $this->generateForFloat($value, $currentDepth);
+            return $this->renderFloat($value, $currentDepth);
         } else {
-            return $this->generateForOther($value, $currentDepth);
+            return $this->renderOther($value, $currentDepth);
         }
     }
 
@@ -94,16 +94,54 @@ class Generator
     }
 
     /**
+     * Render a list of values.
+     *
+     * @param traversable $value        The traversable containing the elements.
+     * @param integer     $currentDepth The current rendering depth.
+     * @param string      $separator    The separator to use between elements.
+     */
+    public function renderValueList($value, $currentDepth = 0, $separator = ', ')
+    {
+        $elements = array();
+
+        $counter = 0;
+        foreach ($value as $element) {
+            $elements[] = $this->generate($element, $currentDepth);
+        }
+
+        return implode($separator, $elements);
+    }
+    
+    /**
+     * Render a list of keys and values.
+     *
+     * @param traversable $value        The traversable containing the elements.
+     * @param integer     $currentDepth The current rendering depth.
+     * @param string      $separator    The separator to use between elements.
+     * @param string      $keySeparator The separator to use between key and value.
+     */
+    public function renderKeyValueList($value, $currentDepth = 0, $separator = ', ', $keySeparator = ' => ')
+    {
+        $elements = array();
+        
+        foreach ($value as $key => $element) {
+            $elements[] = $this->generate($key, $currentDepth) . $keySeparator . $this->generate($element, $currentDepth);
+        }
+
+        return implode($separator, $elements);
+    }
+
+    /**
      * @param array   $value
      * @param integer $currentDepth
      *
      * @return string
      */
-    protected function generateForArray($value, $currentDepth = 0)
+    protected function renderArray($value, $currentDepth = 0)
     {
         $size   = count($value);
         $vector = array_keys($value) === range(0, $size - 1);
-        $more   = null;
+        $more   = '';
 
         if (0 === $size) {
             return '[]';
@@ -111,29 +149,16 @@ class Generator
             return sprintf('[<%d>]', $size);
         } elseif ($this->maximumElements() < $size) {
             $value = array_slice($value, 0, $this->maximumElements());
-            $more  = sprintf('<+%d>', $size - $this->maximumElements());
+            $more  = sprintf(', <+%d>', $size - $this->maximumElements());
         }
 
-        $elements = array();
-
-        // Generate element representations for vector-like array ...
         if ($vector) {
-            foreach ($value as $element) {
-                $elements[] = $this->generate($element, $currentDepth + 1);
-            }
-
-        // Generate element representations for associative array ...
+            $elements = $this->renderValueList($value, $currentDepth + 1);
         } else {
-            foreach ($value as $key => $element) {
-                $elements[] = $this->generate($key) . ' => ' . $this->generate($element, $currentDepth + 1);
-            }
+            $elements = $this->renderKeyValueList($value, $currentDepth + 1);
         }
 
-        if ($more) {
-            $elements[] = $more;
-        }
-
-        return '[' . implode(', ', $elements) . ']';
+        return '[' . $elements . $more . ']';
     }
 
     /**
@@ -142,15 +167,15 @@ class Generator
      *
      * @return string
      */
-    protected function generateForObject($value, $currentDepth = 0)
+    protected function renderObject($value, $currentDepth = 0)
     {
-        if ($value instanceof IRepresentable) {
+        if ($value instanceof RepresentableInterface) {
             return $value->stringRepresentation($this, $currentDepth);
         }
 
         $reflector = new ReflectionClass($value);
         if ($reflector->hasMethod('__toString')) {
-            $string = ' ' . $this->generateForString($value->__toString(), $currentDepth);
+            $string = ' ' . $this->renderString($value->__toString(), $currentDepth);
         } else {
             $string = '';
         }
@@ -169,7 +194,7 @@ class Generator
      *
      * @return string
      */
-    protected function generateForResource($value, $currentDepth = 0)
+    protected function renderResource($value, $currentDepth = 0)
     {
         $type = get_resource_type($value);
         if ('stream' === $type) {
@@ -187,7 +212,7 @@ class Generator
         );
     }
 
-    protected function generateForString($value, $currentDepth = 0)
+    protected function renderString($value, $currentDepth = 0)
     {
         $length = strlen($value);
         $open   = '"';
@@ -237,7 +262,7 @@ class Generator
      *
      * @return string
      */
-    protected function generateForFloat($value, $currentDepth = 0)
+    protected function renderFloat($value, $currentDepth = 0)
     {
         if (0.0 === fmod($value, 1.0)) {
             return $value . '.0';
@@ -252,7 +277,7 @@ class Generator
      *
      * @return string
      */
-    protected function generateForOther($value, $currentDepth = 0)
+    protected function renderOther($value, $currentDepth = 0)
     {
         return strtolower(var_export($value, true));
     }

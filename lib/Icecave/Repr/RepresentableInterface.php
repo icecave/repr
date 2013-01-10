@@ -6,7 +6,7 @@ namespace Icecave\Repr;
 /**
  * Interface for objects that provide their own string representation.
  */
-interface IRepresentable
+interface RepresentableInterface
 {
     /**
      * Generate this object's string representation.
