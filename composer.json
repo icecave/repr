@@ -1,5 +1,5 @@
 {
-    "name": "icecave/stringizer",
+    "name": "icecave/repr",
     "type": "library",
     "description": "Human readable string representations of everything.",
     "keywords": ["string", "representation", "repr"],
