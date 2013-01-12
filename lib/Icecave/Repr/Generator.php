@@ -111,7 +111,7 @@ class Generator
 
         return implode($separator, $elements);
     }
-    
+
     /**
      * Render a list of keys and values.
      *
@@ -123,7 +123,7 @@ class Generator
     public function renderKeyValueList($value, $currentDepth = 0, $separator = ', ', $keySeparator = ' => ')
     {
         $elements = array();
-        
+
         foreach ($value as $key => $element) {
             $elements[] = $this->generate($key, $currentDepth) . $keySeparator . $this->generate($element, $currentDepth);
         }
