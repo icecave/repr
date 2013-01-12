@@ -53,7 +53,7 @@ Strings are represented enclosed in double quotes up to a default maximum length
 
 Objects are represented as a class name and SPL object hash enclosed in angle brackets. If the object has a __toString method the result of this is shown after the class name according to the rules of string representations specified above.
 
-If an object implements the RepresentableInterface interface, the result of its stringRepresentation() method is used instead.
+If an object implements [RepresentableInterface](/IcecaveStudios/repr/blob/master/lib/Icecave/Repr/RepresentableInterface.php), the result of its stringRepresentation() method is used instead.
 
 ### Resources
 
