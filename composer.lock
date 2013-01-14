@@ -1,9 +1,246 @@
 {
-    "hash": "b185d4602df4cccc404aa123294a17b7",
+    "hash": "19026c1ed04b68940421c4b1cd60919c",
     "packages": [
 
     ],
     "packages-dev": [
+        {
+            "name": "eloquent/asplode",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eloquent/asplode.git",
+                "reference": "1.0.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/eloquent/asplode/zipball/1.0.4",
+                "reference": "1.0.4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "icecave/isolator": "2.*"
+            },
+            "require-dev": {
+                "phake/phake": "1.*"
+            },
+            "time": "2012-08-05 18:24:33",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Eloquent\\Asplode": "src"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erin Millard",
+                    "email": "ezzatron@gmail.com",
+                    "homepage": "http://ezzatron.com/"
+                }
+            ],
+            "description": "Drop-in exception-based error handling for PHP.",
+            "homepage": "https://github.com/eloquent/asplode",
+            "keywords": [
+                "exception",
+                "error",
+                "handling",
+                "handler",
+                "errorexception",
+                "fault",
+                "failure"
+            ]
+        },
+        {
+            "name": "eloquent/liberator",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eloquent/liberator.git",
+                "reference": "1.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/eloquent/liberator/zipball/1.1.0",
+                "reference": "1.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "eloquent/pops": "3.*"
+            },
+            "time": "2012-08-02 06:30:51",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Eloquent\\Liberator": "src"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erin Millard",
+                    "email": "ezzatron@gmail.com",
+                    "homepage": "http://ezzatron.com/"
+                }
+            ],
+            "description": "A proxy for circumventing PHP access modifier restrictions.",
+            "homepage": "https://github.com/eloquent/liberator",
+            "keywords": [
+                "reflection",
+                "object",
+                "proxy",
+                "access",
+                "modifier",
+                "private",
+                "protected"
+            ]
+        },
+        {
+            "name": "eloquent/pops",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/eloquent/pops.git",
+                "reference": "3.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/eloquent/pops/zipball/3.1.0",
+                "reference": "3.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-08-02 06:17:58",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Eloquent\\Pops": "src"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erin Millard",
+                    "email": "ezzatron@gmail.com",
+                    "homepage": "http://ezzatron.com/"
+                }
+            ],
+            "description": "PHP object proxy system.",
+            "homepage": "https://github.com/eloquent/pops",
+            "keywords": [
+                "object",
+                "proxy",
+                "escaping"
+            ]
+        },
+        {
+            "name": "icecave/isolator",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/isolator.git",
+                "reference": "2.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/IcecaveStudios/isolator/zipball/2.1.0",
+                "reference": "2.1.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phake/phake": "1.*"
+            },
+            "time": "2012-08-12 03:37:39",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Icecave\\Isolator": "lib"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Harris",
+                    "email": "james.harris@icecave.com.au"
+                }
+            ],
+            "description": "Mock out calls to built-in PHP functions.",
+            "homepage": "https://github.com/IcecaveStudios/isolator",
+            "keywords": [
+                "phpunit",
+                "test",
+                "mock",
+                "fake",
+                "unit",
+                "phake"
+            ]
+        },
+        {
+            "name": "icecave/testing",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/testing.git",
+                "reference": "1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/IcecaveStudios/testing/archive/1.0.3.zip",
+                "reference": "1.0.3",
+                "shasum": ""
+            },
+            "require": {
+                "phake/phake": "1.*",
+                "eloquent/asplode": "1.*",
+                "eloquent/liberator": "1.*"
+            },
+            "time": "2013-01-14 03:12:17",
+            "bin": [
+                "bin/phpunit",
+                "bin/phpunit-coverage",
+                "bin/update-dotfiles"
+            ],
+            "type": "library",
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Harris",
+                    "email": "james.harris@icecave.com.au"
+                }
+            ],
+            "description": "Helper package for testing Icecave projects in a uniform way.",
+            "homepage": "https://github.com/IcecaveStudios/testing",
+            "keywords": [
+                "testing",
+                "phpunit",
+                "test",
+                "unit",
+                "phake",
+                "coverage"
+            ]
+        },
         {
             "name": "phake/phake",
             "version": "v1.0.3",
@@ -23,7 +260,6 @@
             },
             "time": "2012-05-14 08:06:51",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src"
