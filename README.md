@@ -17,7 +17,7 @@
 ### Bare installation
 
 * Clone from GitHub: `git clone git://github.com/IcecaveStudios/repr.git`
-* Use a [PSR-0](https://github.com/php-fig/fig-standards//IcecaveStudios/repr/blob/master/accepted/PSR-0.md)
+* Use a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
   compatible autoloader (namespace 'Icecave\Repr' in the 'lib' directory)
 
 ## Example
