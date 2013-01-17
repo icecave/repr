@@ -1,6 +1,7 @@
 # Repr
 
 [![Build Status](https://secure.travis-ci.org/IcecaveStudios/repr.png)](http://travis-ci.org/IcecaveStudios/repr)
+[![Test Coverage](http://icecavestudios.github.com/repr/coverage-report/coverage.png)](http://icecavestudios.github.com/repr/coverage-report/index.html)
 
 **Repr** provides a way to generate informational string representations of any value, based loosely on Python's [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
