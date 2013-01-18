@@ -7,7 +7,7 @@
 
 ## Installation
 
-**Repr** requires PHP 5.3.
+**Repr** requires PHP 5.3.3 or newer.
 
 ### With [Composer](http://getcomposer.org/)
 
