@@ -1,21 +1,162 @@
 {
-    "hash": "d1a826256467a84aeb3f53b2edfdd889",
+    "hash": "c6afe39142b0d536b092c93655f1d624",
     "packages": [
 
     ],
     "packages-dev": [
         {
-            "name": "icecave/testing",
-            "version": "1.1.4",
+            "name": "eloquent/asplode",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/IcecaveStudios/testing.git",
-                "reference": "1.1.4"
+                "url": "https://github.com/eloquent/asplode.git",
+                "reference": "1.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/IcecaveStudios/testing/archive/1.1.4.zip",
-                "reference": "1.1.4",
+                "url": "https://github.com/eloquent/asplode/zipball/1.0.4",
+                "reference": "1.0.4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "icecave/isolator": "2.*"
+            },
+            "require-dev": {
+                "phake/phake": "1.*"
+            },
+            "time": "2012-08-05 18:24:33",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Eloquent\\Asplode": "src"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erin Millard",
+                    "email": "ezzatron@gmail.com",
+                    "homepage": "http://ezzatron.com/"
+                }
+            ],
+            "description": "Drop-in exception-based error handling for PHP.",
+            "homepage": "https://github.com/eloquent/asplode",
+            "keywords": [
+                "exception",
+                "error",
+                "handling",
+                "handler",
+                "errorexception",
+                "fault",
+                "failure"
+            ]
+        },
+        {
+            "name": "ezzatron/ci-status-images",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezzatron/ci-status-images.git",
+                "reference": "1.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ezzatron/ci-status-images/archive/1.2.0.zip",
+                "reference": "1.2.0",
+                "shasum": ""
+            },
+            "time": "2013-01-18 05:57:45",
+            "type": "library",
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erin Millard",
+                    "email": "ezzatron@gmail.com",
+                    "homepage": "http://ezzatron.com/"
+                }
+            ],
+            "description": "Test coverage percentage and other useful status images for continuous integration systems.",
+            "homepage": "https://github.com/ezzatron/ci-status-images",
+            "keywords": [
+                "image",
+                "github",
+                "ci",
+                "travis",
+                "integration",
+                "continuous",
+                "status",
+                "icon",
+                "button",
+                "label"
+            ]
+        },
+        {
+            "name": "icecave/isolator",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/isolator.git",
+                "reference": "2.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/IcecaveStudios/isolator/archive/2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "icecave/testing": "1.*"
+            },
+            "time": "2013-01-14 04:17:36",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Icecave\\Isolator": "lib"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Harris",
+                    "email": "james.harris@icecave.com.au"
+                }
+            ],
+            "description": "Mock out calls to built-in PHP functions.",
+            "homepage": "https://github.com/IcecaveStudios/isolator",
+            "keywords": [
+                "phpunit",
+                "test",
+                "mock",
+                "fake",
+                "unit",
+                "phake"
+            ]
+        },
+        {
+            "name": "icecave/testing",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/testing.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/IcecaveStudios/testing/archive/2.0.0.zip",
+                "reference": "2.0.0",
                 "shasum": ""
             },
             "require": {
@@ -23,9 +164,10 @@
             },
             "suggest": {
                 "eloquent/asplode": "Use the asplode error handler instead of PHPUnit's internal error handler.",
-                "eloquent/liberator": "Use liberator for circumventing PHP access modifier restrictions inside tests."
+                "eloquent/liberator": "Use liberator for circumventing PHP access modifier restrictions inside tests.",
+                "icecave/woodhouse": "Publish your code coverage information to GitHub pages."
             },
-            "time": "2013-01-18 02:42:39",
+            "time": "2013-01-19 14:28:21",
             "bin": [
                 "bin/phpunit",
                 "bin/phpunit-coverage",
@@ -51,6 +193,72 @@
                 "test",
                 "unit",
                 "phake",
+                "coverage"
+            ]
+        },
+        {
+            "name": "icecave/woodhouse",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/woodhouse.git",
+                "reference": "0.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/IcecaveStudios/woodhouse/archive/0.2.0.zip",
+                "reference": "0.2.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "eloquent/asplode": "1.*",
+                "ezzatron/ci-status-images": "1.*",
+                "icecave/isolator": "2.*",
+                "symfony/console": "2.*"
+            },
+            "require-dev": {
+                "eloquent/typhoon": "0.6.*",
+                "eloquent/liberator": "1.*",
+                "icecave/testing": "1.*"
+            },
+            "time": "2013-01-19 14:03:15",
+            "bin": [
+                "bin/woodhouse"
+            ],
+            "type": "library",
+            "extra": {
+                "typhoon": {
+                    "output-path": "lib-typhoon",
+                    "validator-namespace": "Icecave\\Woodhouse\\TypeCheck",
+                    "use-native-callable": false
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Icecave\\Woodhouse": "lib",
+                    "Icecave\\Woodhouse\\TypeCheck": "lib-typhoon"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Harris",
+                    "email": "james.harris@icecave.com.au"
+                }
+            ],
+            "description": "Publish your PHPUnit code coverage reports on your GitHub pages.",
+            "homepage": "https://github.com/IcecaveStudios/collections",
+            "keywords": [
+                "phpunit",
+                "code",
+                "github",
+                "Xdebug",
+                "publish",
+                "pages",
                 "coverage"
             ]
         },
@@ -96,6 +304,48 @@
                 "testing",
                 "mock"
             ]
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.1.7",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console",
+                "reference": "v2.1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/Console/archive/v2.1.7.zip",
+                "reference": "v2.1.7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-01-17 15:20:05",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com"
         }
     ],
     "aliases": [
