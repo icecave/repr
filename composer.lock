@@ -1,9 +1,59 @@
 {
-    "hash": "b185d4602df4cccc404aa123294a17b7",
+    "hash": "d1a826256467a84aeb3f53b2edfdd889",
     "packages": [
 
     ],
     "packages-dev": [
+        {
+            "name": "icecave/testing",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IcecaveStudios/testing.git",
+                "reference": "1.1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/IcecaveStudios/testing/archive/1.1.4.zip",
+                "reference": "1.1.4",
+                "shasum": ""
+            },
+            "require": {
+                "phake/phake": "1.*"
+            },
+            "suggest": {
+                "eloquent/asplode": "Use the asplode error handler instead of PHPUnit's internal error handler.",
+                "eloquent/liberator": "Use liberator for circumventing PHP access modifier restrictions inside tests."
+            },
+            "time": "2013-01-18 02:42:39",
+            "bin": [
+                "bin/phpunit",
+                "bin/phpunit-coverage",
+                "bin/travis-init",
+                "bin/travis-build"
+            ],
+            "type": "library",
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Harris",
+                    "email": "james.harris@icecave.com.au"
+                }
+            ],
+            "description": "Helper package for testing Icecave projects in a uniform way.",
+            "homepage": "https://github.com/IcecaveStudios/testing",
+            "keywords": [
+                "testing",
+                "phpunit",
+                "test",
+                "unit",
+                "phake",
+                "coverage"
+            ]
+        },
         {
             "name": "phake/phake",
             "version": "v1.0.3",
@@ -23,7 +73,6 @@
             },
             "time": "2012-05-14 08:06:51",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "src"

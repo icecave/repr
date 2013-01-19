@@ -12,10 +12,10 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.3"
     },
     "require-dev": {
-        "phake/phake": "1.*"
+        "icecave/testing": "1.*"
     },
     "autoload": {
         "psr-0": {
