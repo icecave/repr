@@ -16,7 +16,7 @@
     },
     "require-dev": {
         "icecave/testing": "2.*",
-        "icecave/woodhouse": ">=0.2.0"
+        "icecave/woodhouse": "0.*"
     },
     "autoload": {
         "psr-0": {
