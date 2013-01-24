@@ -1,18 +1,18 @@
 # Repr
 
-[![Build Status](https://secure.travis-ci.org/IcecaveStudios/repr.png)](http://travis-ci.org/IcecaveStudios/repr)
-[![Test Coverage](http://icecavestudios.github.com/repr/coverage-report/coverage.png)](http://icecavestudios.github.com/repr/coverage-report/index.html)
+[![Build Status](https://api.travis-ci.org/IcecaveStudios/repr.png)](http://travis-ci.org/IcecaveStudios/repr)
+[![Test Coverage](http://icecave.com.au/repr/coverage-report/coverage.png)](http://icecave.com.au/repr/coverage-report/index.html)
 
 **Repr** provides a way to generate informational string representations of any value, inspired by Python's [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
 ## Installation
 
-**Repr** requires PHP 5.3.3 or newer.
+**Repr** requires PHP 5.3.3 or later.
 
 ### With [Composer](http://getcomposer.org/)
 
 * Add 'icecave/repr' to the project's composer.json dependencies
-* Run `php composer.phar install`
+* Run `composer install`
 
 ### Bare installation
 
