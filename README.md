@@ -1,7 +1,8 @@
-# Repr
-
+![Repr](http://icecave.com.au/assets/img/project-icons/icon-repr.png)<br>&nbsp;&nbsp;
 [![Build Status](https://api.travis-ci.org/IcecaveStudios/repr.png)](http://travis-ci.org/IcecaveStudios/repr)
 [![Test Coverage](http://icecave.com.au/repr/coverage-report/coverage.png)](http://icecave.com.au/repr/coverage-report/index.html)
+
+---
 
 **Repr** provides a way to generate informational string representations of any value, inspired by Python's [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
