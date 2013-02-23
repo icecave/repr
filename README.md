@@ -1,6 +1,7 @@
-![Repr](http://icecave.com.au/assets/img/project-icons/icon-repr.png)<br>&nbsp;&nbsp;
-[![Build Status](https://api.travis-ci.org/IcecaveStudios/repr.png)](http://travis-ci.org/IcecaveStudios/repr)
-[![Test Coverage](http://icecave.com.au/repr/coverage-report/coverage.png)](http://icecave.com.au/repr/coverage-report/index.html)
+# ![Repr]
+
+[![Build Status]](http://travis-ci.org/IcecaveStudios/repr)
+[![Test Coverage]](http://icecave.com.au/repr/artifacts/tests/coverage)
 
 ---
 
@@ -8,18 +9,7 @@
 
 ## Installation
 
-**Repr** requires PHP 5.3.3 or later.
-
-### With [Composer](http://getcomposer.org/)
-
-* Add 'icecave/repr' to the project's composer.json dependencies
-* Run `composer install`
-
-### Bare installation
-
-* Clone from GitHub: `git clone git://github.com/IcecaveStudios/repr.git`
-* Use a [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
-  compatible autoloader (namespace 'Icecave\Repr' in the 'lib' directory)
+* Available as [Composer](http://getcomposer.org) package [icecave/repr](https://packagist.org/packages/icecave/repr).
 
 ## Example
 
@@ -64,3 +54,8 @@ Resources are represented as a resource type and ID enclosed in angle brackets. 
 ### Other Types
 
 All other types are represented by the result of [var_export()](http://php.net/manual/en/function.var-export.php) in lowercase.
+
+<!-- references -->
+[Repr]: http://icecave.com.au/assets/img/project-icons/icon-repr.png
+[Build Status]: https://raw.github.com/IcecaveStudios/repr/gh-pages/artifacts/images/icecave/regular/build-status.png
+C[Test Coverage]: https://raw.github.com/IcecaveStudios/repr/gh-pages/artifacts/images/icecave/regular/coverage.png

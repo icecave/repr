@@ -1,7 +1,6 @@
 {
     "name": "icecave/repr",
-    "type": "library",
-    "description": "Human readable string representations of everything.",
+    "description": "Generate informational string representations of any value, inspired by Python's reprlib library.",
     "keywords": ["string", "representation", "repr"],
     "homepage": "https://github.com/IcecaveStudios/repr",
     "license": "MIT",
@@ -15,8 +14,7 @@
         "php": ">=5.3.3"
     },
     "require-dev": {
-        "icecave/testing": "2.*",
-        "icecave/woodhouse": "0.*"
+        "icecave/archer": "~0.2"
     },
     "autoload": {
         "psr-0": {
