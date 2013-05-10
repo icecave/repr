@@ -1,9 +1,7 @@
-# ![Repr]
+# Repr
 
 [![Build Status]](http://travis-ci.org/IcecaveStudios/repr)
 [![Test Coverage]](http://icecave.com.au/repr/artifacts/tests/coverage)
-
----
 
 **Repr** provides a way to generate informational string representations of any value, inspired by Python's [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
@@ -56,6 +54,5 @@ Resources are represented as a resource type and ID enclosed in angle brackets. 
 All other types are represented by the result of [var_export()](http://php.net/manual/en/function.var-export.php) in lowercase.
 
 <!-- references -->
-[Repr]: http://icecave.com.au/assets/img/project-icons/icon-repr.png
 [Build Status]: https://raw.github.com/IcecaveStudios/repr/gh-pages/artifacts/images/icecave/regular/build-status.png
-C[Test Coverage]: https://raw.github.com/IcecaveStudios/repr/gh-pages/artifacts/images/icecave/regular/coverage.png
+[Test Coverage]: https://raw.github.com/IcecaveStudios/repr/gh-pages/artifacts/images/icecave/regular/coverage.png
