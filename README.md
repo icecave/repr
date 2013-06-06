@@ -1,13 +1,12 @@
 # Repr
 
 [![Build Status]](http://travis-ci.org/IcecaveStudios/repr)
-[![Test Coverage]](http://icecave.com.au/repr/artifacts/tests/coverage)
+[![Test Coverage]](http://icecavestudios.github.io/repr/artifacts/tests/coverage)
 
 **Repr** provides a way to generate informational string representations of any value, inspired by Python's [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
-## Installation
-
-* Available as [Composer](http://getcomposer.org) package [icecave/repr](https://packagist.org/packages/icecave/repr).
+* Install via [Composer](http://getcomposer.org) package [icecave/repr](https://packagist.org/packages/icecave/repr)
+* Read the [API documentation](http://icecavestudios.github.io/repr/artifacts/documentation/api/)
 
 ## Example
 
