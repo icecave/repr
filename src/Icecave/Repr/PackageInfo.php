@@ -1,5 +1,5 @@
 <?php
-namespace Icecave\Rasta;
+namespace Icecave\Repr;
 
 class PackageInfo
 {
