@@ -62,6 +62,6 @@ All other types are represented by the result of [var_export()](http://php.net/m
 lowercase.
 
 <!-- references -->
-[Build Status]: http://b.adge.me/travis/IcecaveStudios/repr/develop.svg
-[Test Coverage]: http://b.adge.me/coveralls/IcecaveStudios/repr/develop.svg
-[SemVer]: http://b.adge.me/:semver-1.0.0-green.svg
+[Build Status]: https://b.adge.me/travis/IcecaveStudios/repr/develop.svg
+[Test Coverage]: https://b.adge.me/coveralls/IcecaveStudios/repr/develop.svg
+[SemVer]: https://b.adge.me/:semver-1.0.0-brightgreen.svg
