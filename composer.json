@@ -1,7 +1,13 @@
 {
     "name": "icecave/repr",
     "description": "A library for generating string representations of any value, inspired by Python's reprlib library.",
-    "keywords": ["string", "representation", "human", "readable", "repr"],
+    "keywords": [
+        "string",
+        "representation",
+        "human",
+        "readable",
+        "repr"
+    ],
     "homepage": "https://github.com/IcecaveStudios/repr",
     "license": "MIT",
     "authors": [
@@ -21,8 +27,8 @@
         "eloquent/asplode": "Drop-in exception-based error handling."
     },
     "autoload": {
-        "psr-0": {
-            "Icecave\\Repr": "src"
+        "psr-4": {
+            "Icecave\\Repr\\": "src"
         }
     }
 }
