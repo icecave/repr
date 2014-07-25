@@ -64,4 +64,4 @@ lowercase.
 <!-- references -->
 [Build Status]: http://img.shields.io/travis/IcecaveStudios/repr/develop.svg
 [Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/repr/develop.svg
-[SemVer]: http://img.shields.io/:semver-1.0.0-brightgreen.svg
+[SemVer]: http://img.shields.io/:semver-1.0.1-brightgreen.svg
