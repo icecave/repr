@@ -1,26 +1,34 @@
 {
     "name": "icecave/repr",
-    "type": "library",
-    "description": "Human readable string representations of everything.",
-    "keywords": ["string", "representation", "repr"],
+    "description": "A library for generating string representations of any value, inspired by Python's reprlib library.",
+    "keywords": [
+        "string",
+        "representation",
+        "human",
+        "readable",
+        "repr"
+    ],
     "homepage": "https://github.com/IcecaveStudios/repr",
     "license": "MIT",
     "authors": [
         {
             "name": "James Harris",
-            "email": "james.harris@icecave.com.au"
+            "email": "james.harris@icecave.com.au",
+            "homepage": "https://github.com/jmalloc"
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3"
     },
     "require-dev": {
-        "icecave/testing": "2.*",
-        "icecave/woodhouse": "0.*"
+        "icecave/archer": "~1"
+    },
+    "suggest": {
+        "eloquent/asplode": "Drop-in exception-based error handling."
     },
     "autoload": {
-        "psr-0": {
-            "Icecave\\Repr": "lib"
+        "psr-4": {
+            "Icecave\\Repr\\": "src"
         }
     }
 }

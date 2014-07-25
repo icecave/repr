@@ -1,21 +1,18 @@
 language: php
 
-php:
-  - 5.3.3
-  - 5.3
-  - 5.4
-  - 5.5
+php: ["5.3", "5.4", "5.5", "5.6", "hhvm"]
 
 matrix:
-  # Use PHP 5.4 for coverage reporting.
-  include:
-    - php: 5.4
-      env:
-        - secure: "XN8dWecawrFb8PSYIAujk8dXaZpNCBm11k+r+liUJQ3LGU/F08DU7PIha4I8\nwCxWnvBT68KdKSO9pZHURce3yi5uJMgatXiI1fJOsnPr7JX0wBMQP8/JlKA+\nB2aLjlSljG9RZwuxcjGIsQJYTaN1QORH7I3oneAX4Pg8DzNsyeU="
+    allow_failures: [{"php": "5.6"}, {"php": "hhvm"}]
+    fast_finish: true
 
-  # PHP 5.5 is still in alpha, so ignore build failures.
-  allow_failures:
-    - php: 5.5
+env:
+  global:
+    - ARCHER_PUBLISH_VERSION=5.5
+    - secure: "Zy8n/eP9CgpDcB36YSr87X9rOow5FGKd+wlUlOdqbsQBDO6AP1u5yZqJPiUKeLwlq0WME88QKVZhBta+NhxiHiCC7Ags+I0w79LuBwtEOWqSgMEr/QkcgVeZQqE4XeQxQFyFNTkhrMCq/6IHYkmLniq6QIpbKhJBeBkiCTGnhx0="
 
-install: composer install --dev --prefer-source
-script:  ./vendor/bin/travis-build
+install:
+  - ./.travis.install
+
+script:
+  - ./vendor/bin/archer travis:build
