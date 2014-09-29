@@ -62,6 +62,6 @@ All other types are represented by the result of [var_export()](http://php.net/m
 lowercase.
 
 <!-- references -->
-[Build Status]: http://img.shields.io/travis/IcecaveStudios/repr/develop.svg
-[Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/repr/develop.svg
-[SemVer]: http://img.shields.io/:semver-1.0.1-brightgreen.svg
+[Build Status]: http://img.shields.io/travis/IcecaveStudios/repr/develop.svg?style=flat-square
+[Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/repr/develop.svg?style=flat-square
+[SemVer]: http://img.shields.io/:semver-1.0.1-brightgreen.svg?style=flat-square
