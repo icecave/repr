@@ -38,7 +38,7 @@ class Repr
     public static function instance()
     {
         if (null === self::$generator) {
-            self::install(new Generator);
+            self::install(new Generator());
         }
 
         return self::$generator;

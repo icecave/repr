@@ -9,7 +9,7 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->_generator = new Generator;
+        $this->_generator = new Generator();
     }
 
     public function testNull()
@@ -100,7 +100,7 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testObject()
     {
-        $object = new stdClass;
+        $object = new stdClass();
         $this->assertSame('<stdClass @ ' . spl_object_hash($object) . '>', $this->_generator->generate($object));
     }
 
