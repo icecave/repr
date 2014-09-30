@@ -61,6 +61,11 @@ stream mode.
 All other types are represented by the result of [var_export()](http://php.net/manual/en/function.var-export.php) in
 lowercase.
 
+## Contact us
+
+* Follow [@IcecaveStudios](https://twitter.com/IcecaveStudios) on Twitter
+* Visit the [Icecave Studios website](http://icecave.com.au)
+
 <!-- references -->
 [Build Status]: http://img.shields.io/travis/IcecaveStudios/repr/develop.svg?style=flat-square
 [Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/repr/develop.svg?style=flat-square
