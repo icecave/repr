@@ -23,12 +23,14 @@
     "require-dev": {
         "icecave/archer": "~1"
     },
-    "suggest": {
-        "eloquent/asplode": "Drop-in exception-based error handling."
-    },
     "autoload": {
         "psr-4": {
             "Icecave\\Repr\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.0.x-dev"
         }
     }
 }
