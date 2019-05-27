@@ -1,11 +1,11 @@
 <?php
 namespace Icecave\Repr;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Phake;
 use stdClass;
 
-class GeneratorTest extends PHPUnit_Framework_TestCase
+class GeneratorTest extends TestCase
 {
     public function setUp()
     {
