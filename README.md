@@ -1,14 +1,13 @@
 # Repr
 
-[![Build Status]](https://travis-ci.org/IcecaveStudios/repr)
-[![Test Coverage]](https://coveralls.io/r/IcecaveStudios/repr?branch=develop)
-[![SemVer]](http://semver.org)
+[![Build Status](http://img.shields.io/travis/icecave/repr/master.svg?style=flat-square)](https://travis-ci.org/icecave/repr)
+[![Code Coverage](https://img.shields.io/codecov/c/github/icecave/repr/master.svg?style=flat-square)](https://codecov.io/github/icecave/repr)
+[![Latest Version](http://img.shields.io/packagist/v/recoil/recoil.svg?style=flat-square&label=semver)](https://semver.org)
 
 **Repr** provides a way to generate informational string representations of any value, inspired by Python's
 [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
-* Install via [Composer](http://getcomposer.org) package [icecave/repr](https://packagist.org/packages/icecave/repr)
-* Read the [API documentation](http://icecavestudios.github.io/repr/artifacts/documentation/api/)
+    composer install icecave/repr
 
 ## Example
 
@@ -48,7 +47,7 @@ Objects are represented as a class name and SPL object hash enclosed in angle br
 method, the result of this is shown after the class name according to the rules of string representations specified
 above.
 
-If an object implements [RepresentableInterface](/IcecaveStudios/repr/blob/master/lib/Icecave/Repr/RepresentableInterface.php),
+If an object implements [RepresentableInterface](src/Icecave/Repr/RepresentableInterface.php),
 the result of its stringRepresentation() method is used instead.
 
 ### Resources
@@ -60,8 +59,3 @@ stream mode.
 
 All other types are represented by the result of [var_export()](http://php.net/manual/en/function.var-export.php) in
 lowercase.
-
-<!-- references -->
-[Build Status]: http://img.shields.io/travis/IcecaveStudios/repr/develop.svg
-[Test Coverage]: http://img.shields.io/coveralls/IcecaveStudios/repr/develop.svg
-[SemVer]: http://img.shields.io/:semver-1.0.1-brightgreen.svg

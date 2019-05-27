@@ -8,27 +8,29 @@
         "readable",
         "repr"
     ],
-    "homepage": "https://github.com/IcecaveStudios/repr",
+    "homepage": "https://github.com/icecave/repr",
     "license": "MIT",
     "authors": [
         {
             "name": "James Harris",
-            "email": "james.harris@icecave.com.au",
+            "email": "mailjamesharris@gmail.com",
             "homepage": "https://github.com/jmalloc"
         }
     ],
     "require": {
-        "php": ">=5.3"
+        "php": ">=7.1"
     },
     "require-dev": {
-        "icecave/archer": "~1"
+        "friendsofphp/php-cs-fixer": "^2",
+        "phake/phake": "^1",
+        "phpunit/phpunit": "^7"
     },
-    "suggest": {
-        "eloquent/asplode": "Drop-in exception-based error handling."
-    },
-    "autoload": {
-        "psr-4": {
-            "Icecave\\Repr\\": "src"
+    "autoload": { "psr-4": { "Icecave\\Repr\\": "src" } },
+    "autoload-dev": { "psr-4": { "Icecave\\Repr\\": "test/src" } },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.1"
         }
     }
 }
