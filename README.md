@@ -2,12 +2,12 @@
 
 [![Build Status](http://img.shields.io/travis/icecave/repr/master.svg?style=flat-square)](https://travis-ci.org/icecave/repr)
 [![Code Coverage](https://img.shields.io/codecov/c/github/icecave/repr/master.svg?style=flat-square)](https://codecov.io/github/icecave/repr)
-[![Latest Version](http://img.shields.io/packagist/v/recoil/recoil.svg?style=flat-square&label=semver)](https://semver.org)
+[![Latest Version](http://img.shields.io/packagist/v/icecave/repr.svg?style=flat-square&label=semver)](https://semver.org)
 
 **Repr** provides a way to generate informational string representations of any value, inspired by Python's
 [reprlib](http://docs.python.org/release/3.1.5/library/reprlib.html) library.
 
-    composer install icecave/repr
+    composer require icecave/repr
 
 ## Example
 
