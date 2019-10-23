@@ -226,7 +226,7 @@ class Generator
         $repr = '';
 
         for ($index = 0; $index < $length; ++$index) {
-            $ch = $value{$index};
+            $ch = $value[$index];
 
             if ($ch === "\n") {
                 $ch = '\n';
