@@ -21,8 +21,8 @@
         "php": ">=7.2"
     },
     "require-dev": {
+        "eloquent/phony-phpunit": "^6",
         "friendsofphp/php-cs-fixer": "^2",
-        "phake/phake": "^1",
         "phpunit/phpunit": "^8"
     },
     "autoload": { "psr-4": { "Icecave\\Repr\\": "src" } },

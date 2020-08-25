@@ -2,8 +2,9 @@
 
 namespace Icecave\Repr;
 
-use Phake;
+use Eloquent\Phony\Phpunit\Phony;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use stdClass;
 
 class GeneratorTest extends TestCase
@@ -107,26 +108,22 @@ class GeneratorTest extends TestCase
 
     public function testObjectWithToString()
     {
-        $object = Phake::mock('ReflectionClass');
-
-        Phake::when($object)
-            ->__toString()
-            ->thenReturn('foo');
+        $handle = Phony::mock(ReflectionClass::class);
+        $handle->__toString->returns('foo');
+        $object = $handle->get();
 
         $this->assertSame('<' . get_class($object) . ' "foo" @ ' . spl_object_hash($object) . '>', $this->_generator->generate($object));
     }
 
     public function testRepresentableObject()
     {
-        $object = Phake::mock(__NAMESPACE__ . '\RepresentableInterface');
-
-        Phake::when($object)
-            ->stringRepresentation(Phake::anyParameters())
-            ->thenReturn('<foo>');
+        $handle = Phony::mock(RepresentableInterface::class);
+        $handle->stringRepresentation->returns('<foo>');
+        $object = $handle->get();
 
         $this->assertSame('<foo>', $this->_generator->generate($object));
 
-        Phake::verify($object)->stringRepresentation($this->_generator, 0);
+        $handle->stringRepresentation->calledWith($this->_generator, 0);
     }
 
     public function testStream()
