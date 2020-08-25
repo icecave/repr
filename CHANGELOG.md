@@ -1,5 +1,9 @@
 # Repr Changelog
 
+### 4.0.0 (2020-08-25)
+
+- **[BC]** Add parameter and return type hints to all types
+
 ### 3.0.0 (2020-08-25)
 
 - **[BC]** Drop support for PHP 7.1
