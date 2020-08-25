@@ -1,4 +1,5 @@
 <?php
+
 namespace Icecave\Repr;
 
 /**
@@ -7,8 +8,8 @@ namespace Icecave\Repr;
 class Repr
 {
     /**
-    * Generate a string representation for an arbitrary value.
-    *
+     * Generate a string representation for an arbitrary value.
+     *
      * @param mixed $value The value for which a string reprsentation should be generated.
      *
      * @return string The string representation of $value.

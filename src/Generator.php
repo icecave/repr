@@ -1,4 +1,5 @@
 <?php
+
 namespace Icecave\Repr;
 
 use ReflectionClass;
@@ -9,9 +10,9 @@ use ReflectionClass;
 class Generator
 {
     /**
-     * @param integer $maximumLength   The maximum number of characters to display when representing a string.
-     * @param integer $maximumDepth    The maximum depth to represent for nested types.
-     * @param integer $maximumElements The maximum number of elements to include in representations of container types.
+     * @param int $maximumLength   The maximum number of characters to display when representing a string.
+     * @param int $maximumDepth    The maximum depth to represent for nested types.
+     * @param int $maximumElements The maximum number of elements to include in representations of container types.
      */
     public function __construct($maximumLength = 50, $maximumDepth = 3, $maximumElements = 3)
     {
@@ -23,8 +24,8 @@ class Generator
     /**
      * Generate a string representation for an arbitrary value.
      *
-     * @param mixed   $value        The value to represent.
-     * @param integer $currentDepth The current depth in the representation string.
+     * @param mixed $value        The value to represent.
+     * @param int   $currentDepth The current depth in the representation string.
      *
      * @return string A short human-readable string representation of the given value.
      */
@@ -46,7 +47,7 @@ class Generator
     }
 
     /**
-     * @return integer The maximum number of characters to display when representing a string.
+     * @return int The maximum number of characters to display when representing a string.
      */
     public function maximumLength()
     {
@@ -54,7 +55,7 @@ class Generator
     }
 
     /**
-     * @param integer $maximum The maximum number of characters to display when representing a string.
+     * @param int $maximum The maximum number of characters to display when representing a string.
      */
     public function setMaximumLength($maximum)
     {
@@ -62,7 +63,7 @@ class Generator
     }
 
     /**
-     * @return integer The maximum depth to represent for nested types.
+     * @return int The maximum depth to represent for nested types.
      */
     public function maximumDepth()
     {
@@ -70,7 +71,7 @@ class Generator
     }
 
     /**
-     * @param integer $maximum The maximum depth to represent for nested types.
+     * @param int $maximum The maximum depth to represent for nested types.
      */
     public function setMaximumDepth($maximum)
     {
@@ -78,7 +79,7 @@ class Generator
     }
 
     /**
-     * @return integer The maximum number of elements to include in representations of container types.
+     * @return int The maximum number of elements to include in representations of container types.
      */
     public function maximumElements()
     {
@@ -86,7 +87,7 @@ class Generator
     }
 
     /**
-     * @param integer $maximum The maximum number of elements to include in representations of container types.
+     * @param int $maximum The maximum number of elements to include in representations of container types.
      */
     public function setMaximumElements($maximum)
     {
@@ -97,12 +98,12 @@ class Generator
      * Render a list of values.
      *
      * @param traversable $value        The traversable containing the elements.
-     * @param integer     $currentDepth The current rendering depth.
+     * @param int         $currentDepth The current rendering depth.
      * @param string      $separator    The separator to use between elements.
      */
     public function renderValueList($value, $currentDepth = 0, $separator = ', ')
     {
-        $elements = array();
+        $elements = [];
 
         $counter = 0;
         foreach ($value as $element) {
@@ -116,13 +117,13 @@ class Generator
      * Render a list of keys and values.
      *
      * @param traversable $value        The traversable containing the elements.
-     * @param integer     $currentDepth The current rendering depth.
+     * @param int         $currentDepth The current rendering depth.
      * @param string      $separator    The separator to use between elements.
      * @param string      $keySeparator The separator to use between key and value.
      */
     public function renderKeyValueList($value, $currentDepth = 0, $separator = ', ', $keySeparator = ' => ')
     {
-        $elements = array();
+        $elements = [];
 
         foreach ($value as $key => $element) {
             $elements[] = $this->generate($key, $currentDepth) . $keySeparator . $this->generate($element, $currentDepth);
@@ -132,8 +133,8 @@ class Generator
     }
 
     /**
-     * @param array   $value
-     * @param integer $currentDepth
+     * @param array $value
+     * @param int   $currentDepth
      *
      * @return string
      */
@@ -162,8 +163,8 @@ class Generator
     }
 
     /**
-     * @param object  $value
-     * @param integer $currentDepth
+     * @param object $value
+     * @param int    $currentDepth
      *
      * @return string
      */
@@ -190,7 +191,7 @@ class Generator
 
     /**
      * @param resource $value
-     * @param integer  $currentDepth
+     * @param int      $currentDepth
      *
      * @return string
      */
@@ -240,7 +241,7 @@ class Generator
                 $ch = '\e';
             } elseif ($ch === "\f") {
                 $ch = '\f';
-            } elseif ($ch === "\\") {
+            } elseif ($ch === '\\') {
                 $ch = '\\\\';
             } elseif ($ch === '$') {
                 $ch = '\$';
@@ -257,8 +258,8 @@ class Generator
     }
 
     /**
-     * @param scalar  $value
-     * @param integer $currentDepth
+     * @param scalar $value
+     * @param int    $currentDepth
      *
      * @return string
      */
@@ -272,8 +273,8 @@ class Generator
     }
 
     /**
-     * @param scalar  $value
-     * @param integer $currentDepth
+     * @param scalar $value
+     * @param int    $currentDepth
      *
      * @return string
      */

@@ -1,8 +1,9 @@
 <?php
+
 namespace Icecave\Repr;
 
-use PHPUnit\Framework\TestCase;
 use Phake;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
 class GeneratorTest extends TestCase
@@ -19,7 +20,7 @@ class GeneratorTest extends TestCase
 
     public function testArrayEmpty()
     {
-        $this->assertSame('[]', $this->_generator->generate(array()));
+        $this->assertSame('[]', $this->_generator->generate([]));
     }
 
     public function testArrayVector()
@@ -27,7 +28,7 @@ class GeneratorTest extends TestCase
         $this->assertSame(
             '[1, 2, 3]',
             $this->_generator->generate(
-                array(1, 2, 3)
+                [1, 2, 3]
             )
         );
     }
@@ -37,7 +38,7 @@ class GeneratorTest extends TestCase
         $this->assertSame(
             '["a" => 1, "b" => 2, "c" => 3]',
             $this->_generator->generate(
-                array('a' => 1, 'b' => 2, 'c' => 3)
+                ['a' => 1, 'b' => 2, 'c' => 3]
             )
         );
     }
@@ -47,7 +48,7 @@ class GeneratorTest extends TestCase
         $this->assertSame(
             '["foo", "bar", "spam", <+2>]',
             $this->_generator->generate(
-                array('foo', 'bar', 'spam', 'doom', 'quux')
+                ['foo', 'bar', 'spam', 'doom', 'quux']
             )
         );
     }
@@ -57,26 +58,26 @@ class GeneratorTest extends TestCase
         $this->assertSame(
             '["a" => 1, "b" => 2, "c" => 3, <+2>]',
             $this->_generator->generate(
-                array(
+                [
                     'a' => 1,
                     'b' => 2,
                     'c' => 3,
                     'd' => 4,
-                    'e' => 5
-                )
+                    'e' => 5,
+                ]
             )
         );
     }
 
     public function testArrayNestedArraysAtMaximumDepth()
     {
-        $input = array(
-            array(
-                array(1, 2, 3),
-                array(4, 5, 6),
-                array(7, 8, 9),
-            )
-        );
+        $input = [
+            [
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9],
+            ],
+        ];
 
         $expected = '[[[1, 2, 3], [4, 5, 6], [7, 8, 9]]]';
         $this->assertSame($expected, $this->_generator->generate($input));
@@ -84,15 +85,15 @@ class GeneratorTest extends TestCase
 
     public function testArrayNestedArraysExceedingMaximumDepth()
     {
-        $input = array(
-            array(
-                array(
-                    array(1, 2, 3),
-                    array(4, 5, 6),
-                    array(7, 8, 9),
-                )
-            )
-        );
+        $input = [
+            [
+                [
+                    [1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 9],
+                ],
+            ],
+        ];
 
         $expected = '[[[[<3>], [<3>], [<3>]]]]';
         $this->assertSame($expected, $this->_generator->generate($input));

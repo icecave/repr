@@ -1,4 +1,5 @@
 <?php
+
 namespace Icecave\Repr;
 
 use PHPUnit\Framework\TestCase;
