@@ -14,7 +14,7 @@ class Repr
      *
      * @return string The string representation of $value.
      */
-    public static function repr($value)
+    public static function repr($value): string
     {
         return self::instance()->generate($value);
     }
@@ -24,7 +24,7 @@ class Repr
      *
      * @param Generator $generator
      */
-    public static function install(Generator $generator)
+    public static function install(Generator $generator): void
     {
         self::$generator = $generator;
     }
@@ -36,7 +36,7 @@ class Repr
      *
      * @return Generator
      */
-    public static function instance()
+    public static function instance(): Generator
     {
         if (null === self::$generator) {
             self::install(new Generator());
