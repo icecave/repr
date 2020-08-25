@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Icecave\Repr;
 
 use ReflectionClass;
@@ -29,7 +31,7 @@ class Generator
      *
      * @return string A short human-readable string representation of the given value.
      */
-    public function generate($value, $currentDepth = 0)
+    public function generate($value, int $currentDepth = 0): string
     {
         if (is_array($value)) {
             return $this->renderArray($value, $currentDepth);
@@ -49,7 +51,7 @@ class Generator
     /**
      * @return int The maximum number of characters to display when representing a string.
      */
-    public function maximumLength()
+    public function maximumLength(): int
     {
         return $this->maximumLength;
     }
@@ -57,7 +59,7 @@ class Generator
     /**
      * @param int $maximum The maximum number of characters to display when representing a string.
      */
-    public function setMaximumLength($maximum)
+    public function setMaximumLength(int $maximum)
     {
         $this->maximumLength = $maximum;
     }
@@ -65,7 +67,7 @@ class Generator
     /**
      * @return int The maximum depth to represent for nested types.
      */
-    public function maximumDepth()
+    public function maximumDepth(): int
     {
         return $this->maximumDepth;
     }
@@ -73,7 +75,7 @@ class Generator
     /**
      * @param int $maximum The maximum depth to represent for nested types.
      */
-    public function setMaximumDepth($maximum)
+    public function setMaximumDepth(int $maximum)
     {
         $this->maximumDepth = $maximum;
     }
@@ -81,7 +83,7 @@ class Generator
     /**
      * @return int The maximum number of elements to include in representations of container types.
      */
-    public function maximumElements()
+    public function maximumElements(): int
     {
         return $this->maximumElements;
     }
@@ -89,7 +91,7 @@ class Generator
     /**
      * @param int $maximum The maximum number of elements to include in representations of container types.
      */
-    public function setMaximumElements($maximum)
+    public function setMaximumElements(int $maximum)
     {
         $this->maximumElements = $maximum;
     }
@@ -97,11 +99,11 @@ class Generator
     /**
      * Render a list of values.
      *
-     * @param traversable $value        The traversable containing the elements.
-     * @param int         $currentDepth The current rendering depth.
-     * @param string      $separator    The separator to use between elements.
+     * @param iterable $value        The iterable containing the elements.
+     * @param int      $currentDepth The current rendering depth.
+     * @param string   $separator    The separator to use between elements.
      */
-    public function renderValueList($value, $currentDepth = 0, $separator = ', ')
+    public function renderValueList(iterable $value, int $currentDepth = 0, string $separator = ', '): string
     {
         $elements = [];
 
@@ -116,12 +118,12 @@ class Generator
     /**
      * Render a list of keys and values.
      *
-     * @param traversable $value        The traversable containing the elements.
-     * @param int         $currentDepth The current rendering depth.
-     * @param string      $separator    The separator to use between elements.
-     * @param string      $keySeparator The separator to use between key and value.
+     * @param iterable $value        The iterable containing the elements.
+     * @param int      $currentDepth The current rendering depth.
+     * @param string   $separator    The separator to use between elements.
+     * @param string   $keySeparator The separator to use between key and value.
      */
-    public function renderKeyValueList($value, $currentDepth = 0, $separator = ', ', $keySeparator = ' => ')
+    public function renderKeyValueList(iterable $value, int $currentDepth = 0, string $separator = ', ', string $keySeparator = ' => '): string
     {
         $elements = [];
 
@@ -138,7 +140,7 @@ class Generator
      *
      * @return string
      */
-    protected function renderArray($value, $currentDepth = 0)
+    protected function renderArray(array $value, int $currentDepth = 0): string
     {
         $size   = count($value);
         $vector = array_keys($value) === range(0, $size - 1);
@@ -168,7 +170,7 @@ class Generator
      *
      * @return string
      */
-    protected function renderObject($value, $currentDepth = 0)
+    protected function renderObject(object $value, int $currentDepth = 0): string
     {
         if ($value instanceof RepresentableInterface) {
             return $value->stringRepresentation($this, $currentDepth);
@@ -195,7 +197,7 @@ class Generator
      *
      * @return string
      */
-    protected function renderResource($value, $currentDepth = 0)
+    protected function renderResource($value, int $currentDepth = 0): string
     {
         $type = get_resource_type($value);
         if ('stream' === $type) {
@@ -213,7 +215,13 @@ class Generator
         );
     }
 
-    protected function renderString($value, $currentDepth = 0)
+    /**
+     * @param string $value
+     * @param int    $currentDepth
+     *
+     * @return string
+     */
+    protected function renderString(string $value, int $currentDepth = 0): string
     {
         $length = strlen($value);
         $open   = '"';
@@ -258,12 +266,12 @@ class Generator
     }
 
     /**
-     * @param scalar $value
-     * @param int    $currentDepth
+     * @param float $value
+     * @param int   $currentDepth
      *
      * @return string
      */
-    protected function renderFloat($value, $currentDepth = 0)
+    protected function renderFloat(float $value, int $currentDepth = 0): string
     {
         if (0.0 === fmod($value, 1.0)) {
             return $value . '.0';
@@ -273,12 +281,12 @@ class Generator
     }
 
     /**
-     * @param scalar $value
-     * @param int    $currentDepth
+     * @param mixed $value
+     * @param int   $currentDepth
      *
      * @return string
      */
-    protected function renderOther($value, $currentDepth = 0)
+    protected function renderOther($value, int $currentDepth = 0): string
     {
         return strtolower(var_export($value, true));
     }
