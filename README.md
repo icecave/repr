@@ -16,7 +16,7 @@ Use the ```Repr::repr()``` method to obtain a string representation for any type
 ```php
 use Icecave\Repr\Repr;
 
-echo Repr::repr(array(1, 2, 3));
+echo Repr::repr([1, 2, 3]);
 ```
 
 The output from the example above is:
