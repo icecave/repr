@@ -7,7 +7,7 @@ use stdClass;
 
 class GeneratorTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->_generator = new Generator();
     }
