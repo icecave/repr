@@ -17,5 +17,5 @@ interface RepresentableInterface
      *
      * @return string The string representation of $this.
      */
-    public function stringRepresentation(Generator $generator, $currentDepth = 0);
+    public function stringRepresentation(Generator $generator, int $currentDepth = 0): string;
 }
